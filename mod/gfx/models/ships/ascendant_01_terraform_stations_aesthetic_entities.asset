@@ -1,0 +1,21 @@
+@terraforming_station = 13
+
+entity = {
+	name = "ascendant_01_aesthetic_terraform_station_entity"
+	pdxmesh = "ascendant_01_mining_station_frame_mesh"
+	locator = { name = "part1" position = { 0 0 0 } }
+	locator = { name = "beam1" position = { 0 -3 0 } scale = 120 rotation = { 0 -90 0 } }
+	default_state = "idle"
+	state = { name = "idle" state_time = 5 }
+	state = { name = "death" state_time = 2 looping = no
+		event = { time = 1.9 particle = "medium_station_explosion_particle" keep_particle = yes trigger_once = yes sound = { soundeffect = "station_explosion_large" } }
+	}
+
+	scale = 1.0
+	game_data = {
+		size = @terraforming_station
+	}
+
+	attach = { "part1" = "ascendant_01_mining_station_section_entity" }
+	attach = { "beam1" = "terraforming_effect_entity" }
+}
